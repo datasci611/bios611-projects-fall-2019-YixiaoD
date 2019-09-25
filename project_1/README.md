@@ -1,5 +1,7 @@
 # Author information
-Name: Yixiao Dong  Github_id: YixiaoD  Email: dyx@live.unc.edu
+Name: Yixiao Dong  
+Github_id: YixiaoD  
+Email: dyx@live.unc.edu
 
 # Project description, purpose, and goals
 UMD(Urban Ministries of Durham) is a non-profit orgnization which connects with the community to end homelessness and fight poverty by offering food, shelter and a future to neighbors in need. This project is designed to dig into the data provided by UMD and find something valuable for the staff working for the orgnization.

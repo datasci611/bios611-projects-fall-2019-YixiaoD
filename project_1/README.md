@@ -1,6 +1,6 @@
 # Author information
-Name: Yixiao Dong
-Github_id: YixiaoD
+Name: Yixiao Dong \n
+Github_id: YixiaoD \n
 Email: dyx@live.unc.edu
 
 # Project description, purpose, and goals

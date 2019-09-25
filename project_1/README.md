@@ -8,16 +8,16 @@ UMD(Urban Ministries of Durham) is a non-profit orgnization which connects with 
 
 # Data sources 
 The data is provided by UMD which recorded the aids they give to people in need in the past years. The raw data sources file("UMD_Services_Provided_20190719.tsv") is given in the data folder. The file mainly includes the following information:
-..* Date
-..* Client File Number: Client identifier (individual or family)
-..* Client File Merge: Separate files created for one family are merged together
-..* Bus Tickets: The service discontinued.
-..* Notes of Service
-..* Food Provided for: Number of people in the family for which food was provided
-..* Food Pounds
-..* Clothing Items
-..* Diapers
-..* School Kits
-..* Hygiene Kits
-..* Financial Support: Money provided to clients. Service discontinued.
+  * Date
+  * Client File Number: Client identifier (individual or family)
+  * Client File Merge: Separate files created for one family are merged together
+  * Bus Tickets: The service discontinued.
+  * Notes of Service
+  * Food Provided for: Number of people in the family for which food was provided
+  * Food Pounds
+  * Clothing Items
+  * Diapers
+  * School Kits
+  * Hygiene Kits
+  * Financial Support: Money provided to clients. Service discontinued.
 

@@ -17,7 +17,7 @@ The data is provided by UMD which recorded the aids they give to people in need 
   * Financial Support: Money provided to clients. Service discontinued.
 
 # Project description
-In this project, I want to using two mechine learning methods (xgboost and svm) to predict whether a person will come for . help
+In this project, I use two machine learning methods (xgboost and svm) to  predict whether a person will come for help again  or not based on the kinds and quantities of aid provided for him the last time he came and the kinds and average quantities of aid provided for him before the last time he came.
 
 
 # Author information

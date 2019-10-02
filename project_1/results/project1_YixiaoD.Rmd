@@ -9,15 +9,34 @@ In this project, I want to predict whether a person comes for help will come bac
 # Data
 The data source is provided by UMD and the raw data file is given in the data dictionary.
 
-# Data Cleasing
-The raw data is heard to analyse. Therefore, data cleansing is condected.
-Firstly, I notice that some records are so old while some happen in the future. So I plot how many record are there in each year.
+# What I am interesting about
+I summarise the coming times of different clients and show it with bar plot.
 ```{r include = FALSE}
 library(tidyverse)
 
 #read dataset
 raw_df <- read_tsv("/Users/Yixiao/Desktop/611project/project_1/data/UMD_Services_Provided_20190719.tsv")
 ```
+```{r}
+come_times <- df %>%
+  group_by(`Client File Number`) %>%
+  summarise(coming_times = n()) %>%
+  filter(coming_times <= 30)
+ggplot(come_times) +
+  geom_bar(aes(coming_times)) 
+```
+
+The figure shows that most clients only come once. So I wonder if we could predict whether a client will come again, we can pay more attention to those who is likely to come again since thay may need more help than those who will not come again.
+
+# Goal of the project
+In this project, I try to predict whether a client will visit again when he comes for help. From the data provided by UMD, for each record we can get the following information: the date, what help the client get, whether the client come again after this visit and the similiar information about his previous visits if this is not his first visit. 
+
+# Design of the project
+First, we need to do data cleasing and transformation to get a data frame which is appropriate for machine learning model. Then we split the data into train set and test set, train the model using the machine learning method, predict on the test set and evaluate the accuracy of prediction. In the end, we try to improve the accuracy of prediction by trying other models or methods.
+
+# Data Cleasing
+The raw data is hard to analyse. Therefore, data cleansing is condected.
+Firstly, I notice that some records are so old while some happen in the future. So I plot how many record are there in each year.
 ```{r}
 #separate Date and change type
 df <- separate(raw_df, Date, into = c("month", "day", "year"), sep = "/")
@@ -47,31 +66,57 @@ df <- df %>%
 df[is.na(df)] <- 0
 ```
 
-What is more, I merge the "Client File Number" and "Client File Merge" into one columns. In this way, different members in a family who come for help will be considered as one client. To achieve this, I use loop statement. For each record, if the Client File Merge is not 0, the replace the Client File Number with Client File Merge.
+What is more, I merge the "Client File Number" and "Client File Merge" into one columns. In this way, different members in a family who come for help will be considered as one client. To achieve this, I use loop statement. For each record, if the Client File Merge is not 0, the replace the Client File Number with Client File Merge. Moreover, I add an column to record the household type of the client.
 ```{r}
 # merge Client file Number
+df <- add_column(df, `Household Type` = 0)
 for (i in 1:nrow(df)) {
   if (df[i,"Client File Merge"] != 0) {
     df[i,"Client File Number"] = df[i,"Client File Merge"]
+    df[i,"Household Type"] = 1
   }
 }
 df <- select(df, -`Client File Merge`)
 ```
 
-Up to now, the data cleasing is completed. And I will use this data frame to conduct following analysis.
+Up to now, the data cleasing is completed.
 
-# What I am interesting about
-I summarise the coming times of different clients and show it with bar plot.
+# Data Transformation
+Since we want to predict whether a client will come again or not, for each record in the data, we need to add a variable showing that whether the client come again after this visit.
 ```{r}
-come_times <- df %>%
-  group_by(`Client File Number`) %>%
-  summarise(coming_times = n())
-ggplot(come_times) +
-  geom_bar(aes(coming_times)) + 
-  xlim(0,50)
+#Come Again: 0 means not visit again, 1 means visit again
+df <- arrange(df, `Client File Number`, year, month, day)
+df <- add_column(df, `Come Again` = 0)
+for (i in 1:(nrow(df)-1)) {
+  if (df[i+1,"Client File Number"] == df[i,"Client File Number"]) {df[i,"Come Again"] = 1}
+}
 ```
+For each record, we can also get the following information based on the existing data:
+* the household type of the client: single or family
+* how many times the client visits before
+* the average quantity of aid the client gets before
+* the days number between this visit and last visit
+```{r}
+df <- add_column(df,`Come Number Before` = 0, 
+                 `Days Since Last Visit` = 0,
+                 `Avg Food Provided For Before` = 0, 
+                 `Avg Food Pounds Before` = 0,
+                 `Avg Clothing Items Before` = 0,
+                 `Avg Diapers Before` = 0,
+                 `Avg School Kits Before` = 0,
+                 `Avg Hygiene Kits Before` = 0,)
+k<-1
+for (i in 2:nrow(df)) {
+  if (df[i-1,"Client File Number"] == df[i,"Client File Number"]) {
+    df[i,"Come Number Before"] = i-k
+    df[i,"Days Since Last Visit"] = df[i,"day"] - df[i-1,"day"] + 30 * (df[i,"month"] - df[i-1,"month"]) + 365 * (df[i,"year"] - df[i-1,"year"])
+    for (j in 15:ncol(df)) {
+      df[i,j] = sum(df[k:(i-1),(j-10)]) / (i-k)
+    }
+  }
+  else {k = i}
+}
 
-The figure shows that most clients only come once and little clients come for help ten times or more. So I wonder if we could predict whether a client will come again, we can pay more attention to those who is likely to come again since thay may need more help than those who will not come again.
 
 
 

@@ -1,20 +1,19 @@
 library(tidyverse)
-library(caret)
+require(xgboost)
 
-df <- read.csv("/Users/Yixiao/Desktop/611project/project_1/data/dataset.csv")
-df$Come.Again <- as.factor(df$Come.Again)
+dataset <- read.csv("/Users/Yixiao/Desktop/611project/project_1/data/dataset.csv")
+dataset$Come.Again <- as.factor(dataset$Come.Again)
+
+data_ind <- sample(seq_len(nrow(df)), size = 10000)
+data <- dataset[data_ind]
 
 #Randomly split the data set into 2 halves
-smp_size <- floor(0.8 * nrow(df))
+smp_size <- floor(0.8 * nrow(data))
 set.seed(0)
-train_ind <- sample(seq_len(nrow(df)), size = smp_size)
-train <- df[train_ind,]
-test <- df[-train_ind,]
+train_ind <- sample(seq_len(nrow(data)), size = smp_size)
+train <- data[train_ind]
+test <- data[-train_ind]
 
-#SVM
-svm_fit = train(Come.Again ~ Food.Provided.for + Food.Pounds + Clothing.Items + Diapers +
-                  School.Kits + Hygiene.Kits + Come.Number.Before + Avg.Food.Provided.For.Before + 
-                  Avg.Food.Pounds.Before + Avg.Clothing.Items.Before + Avg.Diapers.Before +
-                  Avg.School.Kits.Before + Avg.Hygiene.Kits.Before, data = train, method = "svmLinear")
-svm_classification = predict(svm_fit, test, type="raw")
-test$svm_class = as.factor(svm_classification)
+#xgboost
+bstSparse <- xgboost(data = train, label = train$, max.depth = 2, eta = 1, nthread = 2, nrounds = 2, objective = "binary:logistic")
+

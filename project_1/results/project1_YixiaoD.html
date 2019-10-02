@@ -377,7 +377,7 @@ In this project, I want to predict whether a person comes for help will come bac
 </div>
 <div id="data-cleasing" class="section level1">
 <h1>Data Cleasing</h1>
-<p>The raw data is heard to analyse. Therefore, data cleansing is condected. Firstly, I notice that some records are so old while some happen in the future. So I plot how many record are there in each year.</p>
+<p>The raw data is hard to analyse. Therefore, data cleansing is condected. Firstly, I notice that some records are so old while some happen in the future. So I plot how many record are there in each year.</p>
 <pre class="r"><code>#separate Date and change type
 df &lt;- separate(raw_df, Date, into = c(&quot;month&quot;, &quot;day&quot;, &quot;year&quot;), sep = &quot;/&quot;)
 df$month &lt;- as.numeric(df$month)
@@ -398,11 +398,13 @@ ggplot(count_year) +
   select( month : `Hygiene Kits`) %&gt;%
   select(-`Bus Tickets (Number of)`, -`Notes of Service`)
 df[is.na(df)] &lt;- 0</code></pre>
-<p>What is more, I merge the “Client File Number” and “Client File Merge” into one columns. In this way, different members in a family who come for help will be considered as one client. To achieve this, I use loop statement. For each record, if the Client File Merge is not 0, the replace the Client File Number with Client File Merge.</p>
+<p>What is more, I merge the “Client File Number” and “Client File Merge” into one columns. In this way, different members in a family who come for help will be considered as one client. To achieve this, I use loop statement. For each record, if the Client File Merge is not 0, the replace the Client File Number with Client File Merge. Moreover, I add an column to record the household type of the client.</p>
 <pre class="r"><code># merge Client file Number
+df &lt;- add_column(df, `Household Type` = 0)
 for (i in 1:nrow(df)) {
   if (df[i,&quot;Client File Merge&quot;] != 0) {
     df[i,&quot;Client File Number&quot;] = df[i,&quot;Client File Merge&quot;]
+    df[i,&quot;Household Type&quot;] = 1
   }
 }
 df &lt;- select(df, -`Client File Merge`)</code></pre>

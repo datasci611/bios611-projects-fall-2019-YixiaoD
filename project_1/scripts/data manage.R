@@ -12,44 +12,52 @@ df$year <- as.numeric(df$year)
 #select year [1999,2019]
 #select date, client number, food, cloth, diaper, school kit, dyiene kit
 #fill na with 0 
-data <- df %>%
-  filter(year >= 1999 & year <= 2019) %>%
+df <- df %>%
+  filter(year >= 2001 & year <= 2019) %>%
+  filter(year < 2019 | (year == 2019 & month <=9)) %>%
   select( month : `Hygiene Kits`) %>%
   select(-`Bus Tickets (Number of)`, -`Notes of Service`)
-data[is.na(data)] <- 0
+df[is.na(df)] <- 0
 
 # merge Client file Number
-for (i in 1:nrow(data)) {
-  if (data[i,"Client File Merge"] != 0) {
-    data[i,"Client File Number"] = data[i,"Client File Merge"]
+df <- add_column(df, `Household Type` = 0)
+for (i in 1:nrow(df)) {
+  if (df[i,"Client File Merge"] != 0) {
+    df[i,"Client File Number"] = df[i,"Client File Merge"]
+    df[i,"Household Type"] = 1
   }
 }
-data <- select(data, -`Client File Merge`)
+df <- select(df, -`Client File Merge`)
+df <- arrange(df, `Client File Number`, year, month, day)
 
-data <- arrange(data, `Client File Number`, year, month, day)
-data <- add_column(data, `Come Again` = 0, 
-                   `Come Number Before` = 0, 
-                   `Avg Food Provided For Before` = 0, 
-                   `Avg Food Pounds Before` = 0,
-                   `Avg Clothing Items Before` = 0,
-                   `Avg Diapers Before` = 0,
-                   `Avg School Kits Before` = 0,
-                   `Avg Hygiene Kits Before` = 0)
-for (i in 1:nrow(data)) {
-  if (i>1) {
-    if (data[i-1,4] == data[i,4]) {
-      data[i,12] = i-k
-      for (j in 13:ncol(data)) {
-        data[i,j] = sum(data[k:(i-1),(j-8)]) / (i-k)
-      }
+
+#Come Again: 0 means not visit again, 1 means visit again
+df <- add_column(df, `Come Again` = 0)
+for (i in 1:(nrow(df)-1)) {
+  if (df[i+1,"Client File Number"] == df[i,"Client File Number"]) {df[i,"Come Again"] = 1}
+}
+
+#add other information for each records
+df <- add_column(df,`Come Number Before` = 0, 
+                 `Days Since Last Visit` = 0,
+                 `Avg Food Provided For Before` = 0, 
+                 `Avg Food Pounds Before` = 0,
+                 `Avg Clothing Items Before` = 0,
+                 `Avg Diapers Before` = 0,
+                 `Avg School Kits Before` = 0,
+                 `Avg Hygiene Kits Before` = 0,)
+k<-1
+for (i in 2:nrow(df)) {
+  if (df[i-1,"Client File Number"] == df[i,"Client File Number"]) {
+    df[i,"Come Number Before"] = i-k
+    df[i,"Days Since Last Visit"] = df[i,"day"] - df[i-1,"day"] + 30 * (df[i,"month"] - df[i-1,"month"]) + 365 * (df[i,"year"] - df[i-1,"year"])
+    for (j in 15:ncol(df)) {
+      df[i,j] = sum(df[k:(i-1),(j-10)]) / (i-k)
     }
   }
-  if (i<nrow(data)) {
-    if (data[i+1,4] == data[i,4]) {data[i,"Come Again"] = 1}
-    else {k = i+1}
-  }
+  else {k = i}
 }
 
-write_csv(data, "/Users/Yixiao/Desktop/611project/project_1/data/dataset.csv")
+write_csv(df, "/Users/Yixiao/Desktop/611project/project_1/data/dataset.csv")
 
 

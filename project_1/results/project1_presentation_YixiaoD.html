@@ -373,10 +373,6 @@ summary {
 <h1>Background</h1>
 <p>UMD(Urban Ministries of Durham) is a non-profit orgnization which connects with the community to end homelessness and fight poverty. This project is designed to dig into the data provided by UMD and find something valuable for the staff who are working for the orgnization.</p>
 </div>
-<div id="goal" class="section level1">
-<h1>Goal</h1>
-<p>In this project, imagine when a client come for help, I want to predict whether he will come again based on the aid he get in this visit and the imformation about his previous visits (if he visited before). In the way, we can pay more attention to the people who is likely to come again because they may need more help.</p>
-</div>
 <div id="raw-data" class="section level1">
 <h1>Raw Data</h1>
 <p>The data is provided by UMD which recorded the aids they give to people in need in the past years. The raw data sources file(“UMD_Services_Provided_20190719.tsv”) is given in the data folder. The file mainly includes the following information</p>
@@ -405,6 +401,10 @@ summary {
 </li>
 <li>Financial Support: Money provided to clients. Service discontinued.</li>
 </ul>
+</div>
+<div id="goal" class="section level1">
+<h1>Goal</h1>
+<p>In this project, imagine when a client come for help, I want to predict whether he will come again based on the aid he get in this visit and the imformation about his previous visits (if he visited before). In the way, we can pay more attention to the people who is likely to come again because they may need more help.</p>
 </div>
 <div id="procedure" class="section level1">
 <h1>Procedure</h1>
@@ -447,12 +447,12 @@ summary {
 <p>The data used in prediction model includes following columns:</p>
 <ul>
 <li>Come Again</li>
-<li>Food Procided For</li>
+<li>Food Provided For</li>
 <li>Food Pounds</li>
 <li>Clothing Items</li>
 <li>Number of Visits Before</li>
 <li>Days Since last Visit</li>
-<li>Avg Food Procided For Before</li>
+<li>Avg Food Provided For Before</li>
 <li>Avg Food Pounds Before</li>
 <li>Avg Clothing Items Before</li>
 </ul>
@@ -521,8 +521,8 @@ fn = sum(test_label==1&amp;test_pred==0)
 accuracy = (tp+tn)/(tp+fp+tn+fn)
 true_positive_rate = tp/(tp+fn)
 true_negtive_rate = tn/(tn+fp)</code></pre>
-<p>For people that come again, there are 10790 in total, we predict 7666 correctly. The true positive rate is 0.71.<br />
-For people that not come again, there are 2668 in total, we predict 1710 correctly. The negtive rate is 0.64.<br />
+<p>For records that people come again, there are 10790 in total, we predict 7666 correctly. The true positive rate is 0.71.<br />
+For records that people didn’t come again, there are 2668 in total, we predict 1710 correctly. The ture negtive rate is 0.64.<br />
 For all the records, the accuracy is 0.70.</p>
 </div>
 <div id="plot-feature-importance" class="section level4">
@@ -547,7 +547,7 @@ ggplot(df1)+
 <ol style="list-style-type: decimal">
 <li>Data from 2001.7 to 2019.7 is more valid.</li>
 <li>Most people come for cloth and food. And the food pounds record actually starts at about 2005.12.</li>
-<li>By using XGBoost, we can accurately predict predict whether a client will come again based on the aid he get in this visit and the imformation about his previous visits. (we can give a probability) Accuracy:0.70, True Positive Rate:0.71, True Negtive Rate:0.64.</li>
+<li>By using XGBoost, we can accurately predict whether a client will come again based on the aid he get in this visit and the imformation about his previous visits. (we can give a probability) Accuracy:0.70, True Positive Rate:0.71, True Negtive Rate:0.64.</li>
 <li>Numbers of visits before contributes the most to whether a client will come again. The more number of visits before, the more likely he is to come again.</li>
 </ol>
 </div>

@@ -7,9 +7,6 @@ output: html_document
 # Background
 UMD(Urban Ministries of Durham) is a non-profit orgnization which connects with the community to end homelessness and fight poverty. This project is designed to dig into the data provided by UMD and find something valuable for the staff who are working for the orgnization. 
 
-# Goal
-In this project, imagine when a client come for help, I want to predict whether he will come again based on the aid he get in this visit and the imformation about his previous visits (if he visited before). In the way, we can pay more attention to the people who is likely to come again because they may need more help.
-
 # Raw Data
 The data is provided by UMD which recorded the aids they give to people in need in the past years. The raw data sources file("UMD_Services_Provided_20190719.tsv") is given in the data folder. The file mainly includes the following information
 
@@ -25,6 +22,9 @@ The data is provided by UMD which recorded the aids they give to people in need 
 * School Kits  
 * Hygiene Kits  
 * Financial Support: Money provided to clients. Service discontinued.
+
+# Goal
+In this project, imagine when a client come for help, I want to predict whether he will come again based on the aid he get in this visit and the imformation about his previous visits (if he visited before). In the way, we can pay more attention to the people who is likely to come again because they may need more help.
 
 # Procedure
 * data exploration  
@@ -120,12 +120,12 @@ require(xgboost)
 The data used in prediction model includes following columns:
 
 * Come Again
-* Food Procided For
+* Food Provided For
 * Food Pounds
 * Clothing Items
 * Number of Visits Before
 * Days Since last Visit
-* Avg Food Procided For Before
+* Avg Food Provided For Before
 * Avg Food Pounds Before
 * Avg Clothing Items Before
 
@@ -201,8 +201,8 @@ accuracy = (tp+tn)/(tp+fp+tn+fn)
 true_positive_rate = tp/(tp+fn)
 true_negtive_rate = tn/(tn+fp)
 ```
-For people that come again, there are 10790 in total, we predict 7666 correctly. The true positive rate is 0.71.  
-For people that not come again, there are 2668 in total, we predict 1710 correctly. The negtive rate is 0.64.  
+For records that people come again, there are 10790 in total, we predict 7666 correctly. The true positive rate is 0.71.  
+For records that people didn't come again, there are 2668 in total, we predict 1710 correctly. The ture negtive rate is 0.64.  
 For all the records, the accuracy is 0.70.
 
 #### plot feature importance
@@ -224,5 +224,5 @@ ggplot(df1)+
 # Conclusion
 1. Data from 2001.7 to 2019.7 is more valid.
 2. Most people come for cloth and food. And the food pounds record actually starts at about 2005.12.
-3. By using XGBoost, we can accurately predict predict whether a client will come again based on the aid he get in this visit and the imformation about his previous visits. (we can give a probability) Accuracy:0.70, True Positive Rate:0.71, True Negtive Rate:0.64.
+3. By using XGBoost, we can accurately predict whether a client will come again based on the aid he get in this visit and the imformation about his previous visits. (we can give a probability) Accuracy:0.70, True Positive Rate:0.71, True Negtive Rate:0.64.
 4. Numbers of visits before contributes the most to whether a client will come again. The more number of visits before, the more likely he is to come again.

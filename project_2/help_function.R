@@ -1,6 +1,6 @@
 library(tidyverse)
 
-df <- read_tsv("/Users/Yixiao/Desktop/611project/project_2/data/UMD_Services_Provided_20190719.tsv")
+df <- read_tsv(url("https://raw.githubusercontent.com/biodatascience/datasci611/gh-pages/data/project1_2019/UMD_Services_Provided_20190719.tsv"))
 
 df <-separate(df, Date, into = c("month", "day", "year"), sep = "/")
 df <- df[,c(3,1,2,4:15)]

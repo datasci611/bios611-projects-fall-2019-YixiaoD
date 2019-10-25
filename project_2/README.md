@@ -1,6 +1,9 @@
 # BIOS 611 Project 2 - UMD Part 2
 ### Yixiao Dong
-[Project 2 shiny dashboard availboard unline](https://yixiaod.shinyapps.io/project_2/)
+[Project 2 shiny dashboard available online](https://yixiaod.shinyapps.io/project_2/)
+
+#### Background
+[Urban Ministries of Durham](http://umdurham.org/) (UMD) in an non-profit organization helping end homelessness in the neighborhood for decades. The intended audience for this project is primarily those working with or at UMD. 
 
 #### Purpose
 In this project, I want to help UMD staff to discover the data they provided. I already complete chart 1 and chart 2. In chart 1, they can select the year to see how many visit are there in each month of that year. In chart 2, they can select the type of aids to see how many visits for that type of aid are there in each year.  

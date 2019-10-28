@@ -6,8 +6,7 @@
 [Urban Ministries of Durham](http://umdurham.org/) (UMD) in an non-profit organization helping end homelessness in the neighborhood for decades. The intended audience for this project is primarily those working with or at UMD. 
 
 #### Purpose
-In this project, I want to help UMD staff to discover the data they provided. I already complete chart 1 and chart 2. In chart 1, they can select the year to see how many visit are there in each month of that year. In chart 2, they can select the type of aids to see how many visits for that type of aid are there in each year.  
-
+In this project, I want to help UMD staff to discover the data they provided. In the chart session, they can see how many records of different type are there in each year or in each month of a selected year. In the raw data session, they can see the raw data table.
 
 ##### Data
 Raw data provided by the UMD includes 79,838 records with 18 variables and 15,352 distinct Client ID Numbers. Variables describe dates, food pounds, bus tickets, clothing, financial assistance, diaper, hygiene kits, and school supplies kits. The dataset is given in the *data* folder.

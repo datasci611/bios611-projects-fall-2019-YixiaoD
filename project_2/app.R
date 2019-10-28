@@ -1,6 +1,6 @@
 library(shinydashboard)
 library(shiny)
-source("helper.R")
+source("/Users/Yixiao/Desktop/611project/project_2/helper.R")
 
 ui <- dashboardPage(
   #dashboard name

@@ -6,8 +6,8 @@ In this project, I want to find how does length of stay relate to local rent pri
 
 # Data sources
 The following data frames are used:  
-CLIENT_191102.tsv. 
-ENTRY_EXIT_191102.tsv. 
+CLIENT_191102.tsv.  
+ENTRY_EXIT_191102.tsv.  
 Unemployment rate in Durham (from U.S. Bureau of Labor Statistics) https://fred.stlouisfed.org/series/DURH537URN
 
 

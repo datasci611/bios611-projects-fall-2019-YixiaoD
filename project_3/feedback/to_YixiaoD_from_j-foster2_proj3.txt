@@ -1,0 +1,21 @@
+Good job setting up your Makefile. 
+
+Nice job using both pandas and tidyverse in your scripts. While your code is readable, adding comments would make it easier to understand. I would consider using the glob module in your python code to read in multiple *.tsv files (i.e. https://stackoverflow.com/questions/3964681/find-all-files-in-a-directory-with-extension-txt-in-python)
+
+Docker file is present.
+
+The line plots and histograms do a good job visualizing the analyses performed. There was no hypothesis stated in the results or the README.md. It would be helpful to add your hypothesis to the README file so the viewer of your work can quickly understand what you think each analysis will reveal about the relationship between length of stay and local rent prices. 
+
+Expanding your background to include exactly how UMD is addressing homelessness will help motivate your study. As mentioned above including your hypotheses in the README.md will be helpful. While the author of the study has outlined the goal of looking at the relationship between the duration of stay and local rent it is unclear how this is going to be helpful for UMD. Adding interpretations of the analyses performed to a secondary report Mark down file will likely help UMD to better understand how to view your data. Adding a description of the data being analyzed, and why that specific data was used will likely help the client understand why the analyses performed are important. Several of the analyses having different date ranges in the x-axis. It would be helpful to keep the date range consistant across each analysis. If this is not possible due to missing data, it would be clarifying to state there was missing data so a specific range had to be used for the analysis.
+
+The UMD mission statement points to providing food, shelter and a future to its clients as he mechanism for address homelessness, perhaps add a sentence or two about how the analyses presented in the study might improves the services UMD is providing to its clients. 
+
+I think looking at the relationship between length of stay at UMD and local rent prices is interesting. Given UMD is likely unable to impact local rent prices, the story might suggest that UMD could use changes in rent prices to predict the average length of stay of its clients.
+
+Having the URLs to the external datasets was helpful. I would quickly mention that the *.tsv file can be found in your data directory.
+
+While the figures are very clear, the interpretation of the figures is missing. 
+
+Again, adding a few sentences that describe what each of the figures is telling the client will be helpful. 
+
+The overall goal of the analysis is not made clear in the README.md or the results. This can likely be quickly cleared up by adding a couple of sentences to the README.md file or additional report file that gives context and interprets the data. 

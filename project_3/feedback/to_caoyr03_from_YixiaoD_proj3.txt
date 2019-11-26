@@ -1,0 +1,34 @@
+Hi Yuru, I have read your project 3 draft and here is my feedback. The feedback is about what you have accomplished and I believe you will completed a very good final project in the following one week.
+
+1.Is the project organized modularly, with Make as the workflow manager?
+Your project is organized modularly with the data, results, scripts directories and a README file. However, you also need a Makefile as the workflow manager and document the make target in the README. To learn more about this, you can refer to example talked about on class: https://github.com/mbi2gs/its_blast_demo.
+
+2.Does the project use both Python (Pandas specifically) and R (Tidyverse specifically) scripts?
+Yes, you use both Python and R scripts. But I recommend you use .py file instead of .ipynb file and .R file instead of .Rmd file as your scripts because in this way it's easier for you to write the Makefile (in bash, you can run .py file with python file.py and run .R file with Rscript file.R but there is no easy way to run .ipynb file and .Rmd file like this).
+
+3.Is Docker used to define execution environments appropriately?
+No, you don't use Docker in your project draft. In this project, I think you only need to use the rocker/tidyverse and amancevice/pandas:0.25.2-slim this two docker container in your makefile (Docker pull and Docker run). There is no need to write additional Dockerfile.
+
+4.Are the plots appropriate for the data types, the hypotheses being tested, and the points being communicated?
+For the first plot in Problem 1, I think it's not appropriate to use scatter plot here and I don't understand the plot very well. Maybe you need to interpret it. For the other three plots in Problem1, the bar plot is appropriate here. But I think you may need to set a bin width because there are so many thin lines here, which makes me dizzy. For the plot in Problem 3, there are so many types with different colors, but only a few types appear in the plot. I think you can conduct a data cleaning before the visualization. For problem 3, I think table is Ok here. For problem 4, there are some problems with your plot and you need to figure it out.
+
+5.How can the project be organized or documented more clearly?
+You have organized your project very well. But I think you can put your wrangling data.csv and plot.Rmd in the results dictionary as results. You can also take the https://github.com/mbi2gs/its_blast_demo as a reference.
+
+6.Is the purpose of the project communicated clearly?
+Yes, you write the purpose of the project clearly in your README and report.
+
+7.Does the purpose of the project make sense from the client’s point of view? How could the project better serve the client?
+The problems you answer in the project are exactly what the client interests. That's great. To better serve the client, you can add more interpretations in your report to help the client better understand your analysis and conclusions.
+
+8.Is the source of the data made clear? (Remember that this project can be part of your public portfolios, so people not familiar with UMD may see it).
+Yes, you include the source of there data in your README. And I think you can also talk a little about what information does each datable you use contain.
+
+9.Is the interpretation of figures clearly explained?
+No, there is little interpretation of figures in the plot.html. The interpretations are quiet important for people to understand your figures!
+
+10.Is the purpose and interpretation of analysis steps clearly communicated?
+Yes, you write comments in your report about the analysis steps. Good job.
+
+11.Are overall take-home messages clearly communicated?
+Yes, you talk about the backgrounds, purpose, data source and methods of the project. However, you do not give a conclusion in the report!

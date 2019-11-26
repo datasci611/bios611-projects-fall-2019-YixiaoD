@@ -1,0 +1,15 @@
+Hi arquinter, I have read your project 3 draft and here is my feedback. The feedback is about what you have accomplished and I believe you will completed a very good final project in the following one week.
+
+Your project is organized modularly with the data directory, a README file and a Makefile as the workflow manager. However, you also need the results and scripts directory. I also recommend you to delete the .txt in your Makefile name and you need to include the make target in your README. What's more, I think you upload wrong data in the data repo because the "UMD_Services_Provided" data is the data for project 1 and 2 and the dataset you use in your report are CLIENT_191102 and DISABILITY_ENTRY_191102 actually.
+
+You use R in your project but don't use Python. In this project, we need to use Python for data wrangling and R for visualization.  
+
+You don't use Docker in your project draft. I think you need to use the rocker/tidyverse and amancevice/pandas:0.25.2-slim this two docker container in your makefile (Docker pull and Docker run). To learn more about this, you can refer to the in-class exercise: https://github.com/mbi2gs/its_blast_demo/blob/master/Makefile.
+
+You talk about the backgrounds, data resources, purpose and methods in your README, that's  great. However, I think there is something wrong with the "Three variables in the dataset that I believe will be of great importance when analyzing the data are the "Date", "Food.Provided.for", and "Food" variables" because this is the data for project 1 and 2. Also, your purpose confuses me as well. I think you need to clarify your purpose of the project.
+
+As talked before, the source of the data is not made clearly in your project. You use CLIENT_191102 and DISABILITY_ENTRY_191102 in this project but none of them are in your data repo or mentioned in the README or report. There is a Homeless Population Point in Time Count data in your data repo but you don't use it. I think it is a good idea to use this data to see how the homeless population point relate to the number of client come for shelter and the length of stay.
+
+In your report (Analysis_Script.html), the purpose of analysis are not clear because you say "I hope to provide meaningful insight into how the services they provide are affected by various social logical factors, such as age, race, and gender", but you analyze the disability kinds of the clients actually. 
+
+For the figure in your report, I think you need to clarify the meaning of the x and y axis and interpret why this figure give the conclusion that the most common disability among UMD’s clients are mental health problems. I think you can use different color for different types of disability. Try " aes(fill =  )".  And use "+ labs(x ="", y="") " to change the labels of x and y axis. Hope this gives you help.

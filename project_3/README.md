@@ -7,7 +7,8 @@ UMD's Community Shelter provides a shelter for homeless individuals and families
 To run the entire project:  
 ```
 make results/report.html
-```
+```  
+The docker is used in the Makefile. Since there is existed images for R tidyverse and Python pandas on the Docker Hub. There is no need to write additional Dockerfile in this project.  
 In this project, I want to find how does length of stay relate to local rent price and job market. The data folder contains the data frames used in this project. The scripts folder contains the R script for visualization and the python script for data wrangling. The results folder contains the output data frames, plots and the report.Rmd which generates the report.html.
 
 ## Data sources

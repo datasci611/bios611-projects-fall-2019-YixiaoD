@@ -8,7 +8,7 @@ In this project, I want to find how does length of stay relate to local rent pri
 The following data frames are used:  
 CLIENT_191102.tsv.  
 ENTRY_EXIT_191102.tsv.  
-Unemployment rate in Durham (from U.S. Bureau of Labor Statistics) https://fred.stlouisfed.org/series/DURH537URN. 
+Unemployment rate in Durham (from U.S. Bureau of Labor Statistics) https://fred.stlouisfed.org/series/DURH537URN.  
 Average rent price for 1 bed in Durham https://www.rentjungle.com/average-rent-in-durham-rent-trends/
 
 

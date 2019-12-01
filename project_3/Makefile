@@ -4,14 +4,14 @@ pull-pandas:
 pull_tidyverse:
 	docker pull rocker/tidyverse && touch $@
 
-results/dataframe1.csv: pull-pandas scripts\generate_dataframe1.py
+results/dataframe1.csv: pull-pandas scripts/generate_dataframe1.py
 	docker run -it --rm \
 	-v $(shell pwd):/workdir \
 	-w /workdir \
 	amancevice/pandas:0.25.2-slim \
 		python scripts/generate_dataframe1.py 
 
-results/dataframe2.csv: pull-pandas scripts\generate_dataframe2.py
+results/dataframe2.csv: pull-pandas scripts/generate_dataframe2.py
 	docker run -it --rm \
 	-v $(shell pwd):/workdir \
 	-w /workdir \

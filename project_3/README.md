@@ -1,10 +1,17 @@
-# Backgrounds
+#Project 3
+
+To run the entire project:
+```
+make results/report.html
+```
+
+## Backgrounds
 UMD's Community Shelter provides a shelter for homeless individuals and families. By offering case management and workforce development, it also helps people end homeless and provides them with a future.
 
-# Project description
+## Project description
 In this project, I want to find how does length of stay relate to local rent price and job market.
 
-# Data sources
+## Data sources
 The following data frames are used:  
 CLIENT_191102.tsv.  
 ENTRY_EXIT_191102.tsv.  
@@ -12,7 +19,7 @@ Unemployment rate in Durham (from U.S. Bureau of Labor Statistics) https://fred.
 Average rent price for 1 bed in Durham https://www.rentjungle.com/average-rent-in-durham-rent-trends/
 
 
-# Author information
+## Author information
 Name: Yixiao Dong  
 Github_id: YixiaoD  
 Email: dyx@live.unc.edu

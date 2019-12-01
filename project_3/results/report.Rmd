@@ -28,6 +28,6 @@ In general, the unemployment rate keeps decreasing from 2015 to 2019.
 From the plot we can see that the rent price keeps increasing from 900 to 1100 in 2015, then keeps still at about 1050 in 2016 and 2017, and then starts to increase again since 2018 to now.
 
 ## Conclusions
-Therefore, we can see that in general the lenth of stay has little relationship with the unemployment rate. But it has a positive relationship with the local price. The higher the local price is, people are likely to stay longer.
+Therefore, we can see that in general the length of stay has little relationship with the unemployment rate. But it has a positive relationship with the local price. The higher the local price is, people are likely to stay longer.
 
 

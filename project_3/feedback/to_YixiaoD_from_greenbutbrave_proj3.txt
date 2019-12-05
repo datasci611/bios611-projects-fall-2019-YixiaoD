@@ -1,0 +1,24 @@
+Feedback Score: 15/15
+
+Points Description
+5/5 Feedback was specific – you know exactly what to improve, and what you did well
+5/5 Feedback was “meta” – the feedback went beyond finding typos to helping you with higher-level improvements
+2/2 Feedback was respectful and optimistic – you feel helped and encouraged after reading the feedback
+3/3 Feedback was “timely” – you received the feedback in time to help you with your assignment
+
+Dear YixiaoD,  
+Thanks for your thorough feedback! Feedback was specific and went beyond finding typos to helping you with higher-level improvements. All of the required feedback components were well articulate.
+
+===
+  
+Hi greenbutbrave, I have read your project 3 draft and here is my feedback. The feedback is about what you have accomplished and I believe you will completed a very good final project in the following one week.
+
+You include backgrounds, data sources and interpretation of analysis in the README. Good job. About the dataset, you list the datasets you use and the main content of each dataset, which help understand the data better. You also clearly communicated the purpose and interpretation of analysis steps. 
+
+About the project structure, the project is organized modularly with data and script directory and a README file. However, you still need a result directory and a Makefile as the workflow manager. you also need a Makefile as the workflow manager and document the make target in the README. To learn more about this, you can refer to example talked about on class: https://github.com/mbi2gs/its_blast_demo. 
+
+You use both Python and R scripts. But I recommend you use .py file instead of .ipynb file   as your scripts because in this way it's easier for you to write the Makefile (in bash, you can run .py file with python file.py and run .R file with Rscript file.R but there is no easy way to run .ipynb file like this).
+
+You don't use Docker in your project draft. In this project, I think you only need to use the rocker/tidyverse and amancevice/pandas:0.25.2-slim this two docker container in your makefile (with Docker pull and Docker run). There is no need to write additional Dockerfile.
+
+You give density plot and box plot in your R script. You also conduct a machine learning using the LASSO model. Good job! I recommend you to put the plots and the results of prediction in the results directory to make it easier for the client to see what you achieve.
